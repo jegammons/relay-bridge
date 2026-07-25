@@ -1,0 +1,8 @@
+// Copy this file to config.js (gitignored) and fill in your real API token from
+// the CloudKit Dashboard (icloud.developer.apple.com) -> Relay container -> Tokens.
+// See SETUP.md in this folder for the full one-time setup walkthrough.
+window.RELAY_BRIDGE_CONFIG = {
+  containerIdentifier: "iCloud.com.jakobgammons.Relay",
+  apiToken: "PASTE_YOUR_CLOUDKIT_API_TOKEN_HERE",
+  environment: "production"
+};
