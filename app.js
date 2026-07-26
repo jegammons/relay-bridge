@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const config = window.RELAY_BRIDGE_CONFIG;
+  const config = window.CIPHER_BRIDGE_CONFIG;
   const statusEl = document.getElementById("status");
   const textEl = document.getElementById("dictation-text");
   const copyButton = document.getElementById("copy-button");
