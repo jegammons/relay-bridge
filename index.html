@@ -5,49 +5,133 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cipher Bridge</title>
 <style>
+  @font-face {
+    font-family: "Big Shoulders Display";
+    src: url("fonts/BigShouldersDisplay.ttf") format("truetype-variations");
+    font-weight: 100 900;
+  }
+  @font-face {
+    font-family: "Newsreader";
+    src: url("fonts/Newsreader.ttf") format("truetype-variations");
+    font-weight: 100 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Newsreader";
+    src: url("fonts/Newsreader-Italic.ttf") format("truetype-variations");
+    font-weight: 100 900;
+    font-style: italic;
+  }
+
+  :root {
+    --espresso: #191310;
+    --umber: #241b14;
+    --cream: #f2e7d5;
+    --amber: #e8a33d;
+    --ember: #e0385a;
+    --border: #3a2c20;
+  }
+
+  * { box-sizing: border-box; }
+
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: "Newsreader", Georgia, serif;
     max-width: 640px;
     margin: 48px auto;
-    padding: 0 20px;
-    color: #1a1a1a;
-    background: #f5f5f7;
+    padding: 0 22px;
+    color: var(--cream);
+    background: var(--espresso);
   }
-  h1 { font-size: 20px; }
-  #status { color: #666; font-size: 14px; margin-bottom: 12px; min-height: 18px; }
+
+  .wordmark {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-variation-settings: "wght" 800;
+    font-size: 17px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 12px 0 4px;
+  }
+  .wordmark .dot { color: var(--amber); }
+
+  .subtitle {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-variation-settings: "wght" 600;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(242, 231, 213, 0.45);
+    margin-bottom: 20px;
+  }
+
+  #status {
+    font-style: italic;
+    color: rgba(242, 231, 213, 0.55);
+    font-size: 14px;
+    margin-bottom: 14px;
+    min-height: 18px;
+  }
+
+  #sign-in-button { margin-bottom: 16px; }
+
   textarea {
     width: 100%;
     min-height: 240px;
-    font-size: 16px;
-    padding: 12px;
-    box-sizing: border-box;
-    border: 1px solid #d0d0d5;
-    border-radius: 8px;
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 16px;
+    color: var(--cream);
+    background: rgba(242, 231, 213, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
     resize: vertical;
   }
-  .actions { margin-top: 12px; display: flex; gap: 8px; }
-.actions   button {
-    font-size: 15px;
-    padding: 10px 16px;
-    border-radius: 8px;
+  textarea::placeholder {
+    font-style: italic;
+    color: rgba(242, 231, 213, 0.4);
+  }
+
+  .actions { margin-top: 14px; display: flex; gap: 10px; }
+  .actions button {
+    font-family: "Big Shoulders Display", sans-serif;
+    font-variation-settings: "wght" 700;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-radius: 999px;
     border: none;
-    background: #0071e3;
-    color: white;
+    background: var(--amber);
+    color: var(--espresso);
     cursor: pointer;
   }
-  .actions button.secondary { background: #e5e5ea; color: #1a1a1a; }
+  .actions button.secondary {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid var(--border);
+  }
   .actions button:disabled { opacity: 0.5; cursor: default; }
+
+  .hint {
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(242, 231, 213, 0.45);
+    text-align: center;
+    margin-top: 22px;
+  }
 </style>
 </head>
 <body>
-  <h1>Cipher Bridge</h1>
+  <div class="wordmark">CIPHER<span class="dot">.</span></div>
+  <div class="subtitle">Work Bridge</div>
   <p id="status">Loading...</p>
-    <div id="sign-in-button" style="display:none"></div>
+  <div id="sign-in-button" style="display:none"></div>
   <textarea id="dictation-text" readonly placeholder="Nothing sent yet - dictate on your phone, then tap &quot;Send to Work Bridge.&quot;"></textarea>
   <div class="actions">
     <button id="copy-button">Copy</button>
     <button id="refresh-button" class="secondary" style="display:none">Refresh</button>
   </div>
+  <p class="hint">dictate on your phone &middot; tap "Send to Work Bridge" &middot; copy here</p>
 
   <script src="https://cdn.apple-cloudkit.com/ck/2/cloudkit.js"></script>
   <script src="config.js"></script>
